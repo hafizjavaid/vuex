@@ -23,6 +23,7 @@ export default {
      ShoppingCart
   },
 };
+
 </script>
 <style>
 .container {
