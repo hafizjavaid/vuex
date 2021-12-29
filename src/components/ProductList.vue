@@ -12,17 +12,19 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["products"]),
+    ...mapGetters("products", {
+      products: "getProducts",
+    }),
   },
   methods: {
-    ...mapActions(["addProductToCart"]),
+    ...mapActions("cart", ["addProductToCart"]),
   },
   created() {
-    this.$store.dispatch("getAllProducts");
+    this.$store.dispatch("products/getAllProducts");
   },
 };
 </script>

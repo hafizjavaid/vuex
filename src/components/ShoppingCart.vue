@@ -25,12 +25,17 @@ import { mapGetters, mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["checkoutStatus"]),
-    ...mapGetters(["cartProducts", "cartTotalPrice"]),
+    ...mapState("cart", {
+      checkoutStatus: "checkoutStatus",
+    }),
+    ...mapGetters("cart", {
+      cartProducts: "cartProducts",
+      cartTotalPrice: "cartTotalPrice",
+    }),
   },
   methods: {
     checkout(products) {
-      this.$store.dispatch("checkout", products);
+      this.$store.dispatch("cart/checkout", products);
     },
   },
 };
